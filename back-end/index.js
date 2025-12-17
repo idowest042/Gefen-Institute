@@ -9,7 +9,10 @@ const port = process.env.PORT || 3000;
 connectdb()
 app.use(cors({
     origin: ['http://localhost:5173',
-        "http://localhost:5174",],
+        "http://localhost:5174",
+    "https://gefen-institute.vercel.app",
+    "https://gefen-admin.vercel.app"
+    ],
     credentials: true
 }));
 app.use(express.json());
