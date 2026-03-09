@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {assets} from "../assets/assets"
 import { AuthStore } from '../Store/authStore';
 
@@ -17,7 +17,7 @@ export default function AdminNavbar() {
 
   // Navigate to dashboard
   const goToDashboard = () => {
-    navigate('/admin/dashboard');
+    navigate('/');
   };
 
   // Get first letter for avatar
@@ -123,6 +123,27 @@ export default function AdminNavbar() {
                       </svg>
                       Dashboard
                     </button>
+                    <Link to="/news">  
+                                     <button
+                      onClick={() => {
+                        goToDashboard();
+                        setShowDropdown(false);
+                      }}
+                      className="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150 flex items-center gap-2"
+                    >
+                      <svg 
+                        className="w-4 h-4" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      </svg>
+                      News
+                    </button>
+                    </Link>
+ 
 
                     {/* Logout Button */}
                     <button

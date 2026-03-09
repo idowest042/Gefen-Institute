@@ -83,7 +83,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Address',
-      content: 'Lagos, Nigeria',
+      content: 'Enugu, Nigeria',
       link: null
     },
     {

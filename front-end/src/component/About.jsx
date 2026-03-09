@@ -158,7 +158,7 @@ export default function About() {
             variants={fadeUpVariants}
             className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center"
           >
-            Meet Our Founder — <span className="text-[#0037A3]">Professor Godson Igwe</span>
+            Meet Our Founder — <span className="text-[#0037A3]">Professor Godson Igwe</span><br/> (BA, CIM,PgDip,CPCAB)
           </motion.h3>
 
           <div className="flex flex-col md:flex-row items-center gap-8">
@@ -169,7 +169,7 @@ export default function About() {
             >
               <img
                 src={assets.professor}
-                alt="Professor Godson Igwe - Founder of Gefen Institute"
+                alt="Professor Godson Igwe (BA, CIM,PgDip,CPCAB) - Founder of Gefen Institute"
                 className="w-48 h-48 rounded-full object-cover shadow-lg border-4 border-[#00923F]"
               />
             </motion.div>
@@ -180,7 +180,7 @@ export default function About() {
               className="flex-1 text-center md:text-left"
             >
               <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                Professor Godson Igwe
+                Professor Godson Igwe (BA, CIM,PgDip,CPCAB)
               </h4>
               <p className="text-[#00923F] font-semibold mb-4 text-lg">
                 Founder & Portuguese Language Expert

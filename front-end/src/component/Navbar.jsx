@@ -14,7 +14,7 @@ export default function Navbar() {
     { name: 'Scholarships', href: '/scholarships' },
     { name: 'Testimonials', href: '/testimonials' },
     { name: 'Contact', href: '/contact' },
-     { name: 'FAQ', href: '/faq' },
+    { name: 'news', href: '/news' },
       { name: 'Why Brazil', href: '/why-brazil' }
   ];
 

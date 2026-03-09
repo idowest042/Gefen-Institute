@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import AdminMessages from "./Pages/AdminMessages";
 import { AuthStore } from "./Store/authStore";
+import AdminNewsManager from './Pages/AdminNewsManager';
 
 const App = () => {
   // ✅ Use individual selectors (this is the correct way)
@@ -97,6 +98,12 @@ const App = () => {
           path="*"
           element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />}
         />
+        <Route 
+  path="/news" 
+  element={
+      <AdminNewsManager />
+  } 
+/>
       </Routes>
     </div>
   );

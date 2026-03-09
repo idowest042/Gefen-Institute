@@ -14,6 +14,7 @@ import PECGUndergraduate from './Pages/PECGUndergraduate'
 import PECPGPostgraduate from './Pages/PECGPostgraduate'
 import LanguageCulturalImmersion from './Pages/LanguageCulturalImersion'
 import WhyBrazil from './Pages/WhyBrazil'
+import NewsSection from './component/NewsSection';
 const App = () => {
   return (
     <div>
@@ -30,6 +31,7 @@ const App = () => {
         <Route path='/postgraduate' element={<PECPGPostgraduate />} />
         <Route path='/cultural-immersion' element={<LanguageCulturalImmersion />} />
         <Route path='/why-brazil' element={<WhyBrazil/>} />
+        <Route path="/news" element={<NewsSection/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

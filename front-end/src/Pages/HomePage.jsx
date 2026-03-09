@@ -8,6 +8,7 @@ import WhyBrazil from '../component/WhyBrazil'
 import Testimonials from '../component/Testimonials'
 import Footer from '../component/Footer'
 import Contact from '../component/Contact'
+import NewsSection from '../component/NewsSection'
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
         <ScholarshipPrograms/>
         <PortugueseClasses />
         <WhyBrazil />
+        <NewsSection />
         <Testimonials />
         <Contact />
         <Footer />

@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { connectdb } from './Config/db.js';
 import adminRouter from './Routes/adminRoute.js';
+import newsRoute from "./Routes/newsRoutes.js"
+import uploadRoutes from './Routes/uploadRoutes.js';
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -18,6 +20,8 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/user', adminRouter);
+app.use('/api/news', newsRoute)
+app.use('/api/upload', uploadRoutes);
 app.get('/', (req, res) => {
     res.send('Welcome to the back-end server!');
 })
