@@ -20,6 +20,7 @@ import { useNewsStore } from '../Store/newsStore';
 import { axiosInstance } from '../lib/axios';
 import {toast} from 'react-toastify';
 import AdminNavbar from '../components/AdminNavbar';
+import imageCompression from 'browser-image-compression';
 
 
 export default function AdminNewsManager() {
@@ -77,27 +78,32 @@ export default function AdminNewsManager() {
       return;
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Image size should be less than 5MB');
-      return;
-    }
-
-    // Show preview immediately
-    const previewReader = new FileReader();
-    previewReader.onloadend = () => {
-      setImagePreview(previewReader.result);
-    };
-    previewReader.readAsDataURL(file);
-
-    // Upload to server
     setIsUploading(true);
+
     try {
-      const uploadReader = new FileReader();
-      uploadReader.onloadend = async () => {
+      // ✅ Compress image before upload
+      const options = {
+        maxSizeMB: 0.5, // Maximum file size in MB (500KB)
+        maxWidthOrHeight: 1920, // Max width/height
+        useWebWorker: true,
+        fileType: 'image/jpeg' // Convert to JPEG for better compression
+      };
+
+      toast.info('Compressing image...');
+      const compressedFile = await imageCompression(file, options);
+      
+      console.log('Original size:', (file.size / 1024 / 1024).toFixed(2), 'MB');
+      console.log('Compressed size:', (compressedFile.size / 1024 / 1024).toFixed(2), 'MB');
+
+      // Convert to base64
+      const reader = new FileReader();
+      reader.onloadend = async () => {
+        setImagePreview(reader.result);
+
         try {
+          toast.info('Uploading image...');
           const response = await axiosInstance.post('/upload/image', {
-            image: uploadReader.result
+            image: reader.result
           });
           
           setFormData(prev => ({
@@ -114,11 +120,18 @@ export default function AdminNewsManager() {
           setIsUploading(false);
         }
       };
-      uploadReader.readAsDataURL(file);
+      
+      reader.onerror = () => {
+        toast.error('Failed to read image file');
+        setIsUploading(false);
+      };
+
+      reader.readAsDataURL(compressedFile);
+
     } catch (error) {
+      console.error('Compression error:', error);
+      toast.error('Failed to compress image');
       setIsUploading(false);
-      toast.error('Failed to upload image');
-      setImagePreview(null);
     }
   };
 

@@ -13,7 +13,8 @@ app.use(cors({
     origin: ['http://localhost:5173',
         "http://localhost:5174",
     "https://gefen-institute.vercel.app",
-    "https://gefen-admin.vercel.app"
+    "https://gefen-admin.vercel.app",
+    "https://www.gefenacademy.ng"
     ],
     credentials: true
 }));
